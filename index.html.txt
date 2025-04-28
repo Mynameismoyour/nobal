@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Result Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .college-name {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .logo img {
+            height: 80px;
+            margin-right: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: green;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="college-name">🌟 Your College Name Here 🌟</div>
+        <div class="logo">
+            <img src="YOUR-COLLEGE-LOGO-LINK-HERE" alt="College Logo">
+        </div>
+    </div>
+
+    <h2>Check Your Result</h2>
+
+    <select id="department">
+        <option value="Computer">Computer Student</option>
+        <option value="Cutting">Cutting Student</option>
+    </select><br>
+
+    <input type="text" id="rollNumber" placeholder="Enter Roll Number">
+    <button onclick="checkResult()">Check Result</button>
+
+    <div id="result"></div>
+
+    <script>
+        // Your students' data
+        const results = {
+            "Computer": {
+                "101": { name: "John Doe", marks: 89, result: "Pass" },
+                "102": { name: "Alice Smith", marks: 76, result: "Pass" }
+            },
+            "Cutting": {
+                "201": { name: "Emma Brown", marks: 92, result: "Pass" },
+                "202": { name: "Olivia Davis", marks: 58, result: "Pass" }
+            }
+        };
+
+        function checkResult() {
+            const department = document.getElementById('department').value;
+            const rollNumber = document.getElementById('rollNumber').value.trim();
+            const student = results[department][rollNumber];
+
+            if (student) {
+                document.getElementById('result').innerHTML = 
+                    Name: ${student.name} <br> Marks: ${student.marks} <br> Result: ${student.result};
+            } else {
+                document.getElementById('result').innerHTML = "No record found!";
+            }
+        }
+    </script>
+
+</body>
+</html
